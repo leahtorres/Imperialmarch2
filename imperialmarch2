@@ -1,0 +1,89 @@
+#Name of the song: imperial March
+#sheet music: https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0017607
+#Bpm used: https://songbpm.com/imperial-march?q=imperial%20march
+use_synth:saw
+use_bpm 95
+s = 0.25
+3.times do
+  play :g4
+  sleep 4*s
+end
+2.times do
+  play :e4
+  sleep 0.75
+  play :b4
+  sleep 0.375
+  play :g4
+  sleep 4*s
+end
+3.times do
+  play :d5
+  sleep 4*s
+end
+play :e5
+sleep 0.75
+play :b4
+sleep 0.25
+play :g4
+sleep 4*s
+play :e4
+sleep 0.75
+play :b4
+sleep 0.375
+play :g4
+sleep 4*s
+play :g5
+sleep 4*s
+with_fx :echo do
+  sample :drum_splash_hard,rate: -4
+  sleep 1
+end
+live_loop :drum do
+  sample :bd_boom
+  sleep 1
+end
+live_loop :drum do
+  sample :drum_bass_hard
+  sleep 1
+end
+live_loop :ImperialMarch do
+  play :g4
+  sleep 4*s
+  play :g4
+  sleep 4*s
+  play :g4
+  sleep 4*s
+  play :e4
+  sleep 0.75
+  play :b4
+  sleep 0.375
+  play :g4
+  sleep 4*s
+  play :e4
+  sleep 0.75
+  play :b4
+  sleep 0.375
+  play :g4
+  sleep 4*s
+  play :d5
+  sleep 4*s
+  play :d5
+  sleep 4*s
+  play :d5
+  sleep 4*s
+  play :e5
+  sleep 0.75
+  play :b4
+  sleep 0.25
+  play :g4
+  sleep 4*s
+  play :e4
+  sleep 0.75
+  play :b4
+  sleep 0.375
+  play :g4
+  sleep 4*s
+  sample :drum_splash_hard, rate: 4
+  sleep 1
+  sample :ambi_dark_woosh, rate: 8
+end
