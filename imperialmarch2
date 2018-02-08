@@ -83,7 +83,8 @@ live_loop :ImperialMarch do
   sleep 0.375
   play :g4
   sleep 4*s
-  sample :drum_splash_hard, rate: 4
-  sleep 1
-  sample :ambi_dark_woosh, rate: 8
+  with_fx :echo do
+    sample :drum_splash_hard, rate: 4
+    sleep 1
+  end
 end
