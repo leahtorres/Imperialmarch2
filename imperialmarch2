@@ -4,10 +4,12 @@
 use_synth:saw
 use_bpm 95
 s = 0.25
+#there is a regular loop of the note g4 that will play three times and sleep once.
 3.times do
   play :g4
   sleep 4*s
 end
+#This isn't a loop just regular code that plays notes and sleeps on it's proper time
 play :e4
 sleep 3*s
 play :b4
@@ -20,11 +22,12 @@ play :b4
 sleep s
 play :g4
 sleep 8*s
-
+#there is a regular loop of the note d5 that will play three times and sleep once.
 3.times do
   play :d5
   sleep 4*s
 end
+#This is the ending of the melody, it's not in a loop.
 play :e5
 sleep 0.75
 play :b4
@@ -37,9 +40,12 @@ play :b4
 sleep s
 play :g4
 sleep 8*s
+# x is my variable to replace a sample with the x letter,istead of writing the sample name each time
 x = :drum_heavy_kick
+# a is represented to subsitute amp which is the number of 0
 a = 0
-with_fx :echo do
+#the echo will make
+with_fx :level do
   live_loop :drum do
     sample x
     sleep 0.5
@@ -47,11 +53,12 @@ with_fx :echo do
     sleep 0.5
     sample :drum_snare_hard, amp: a
     sleep 0.5
-    sample :drum_cymbal_open
+    sample :drum_cymbal_closed, amp: a
     sleep 0.5
     a = a+1
   end
 end
+#now the melody is put into live_loop which means that it would keep going perpetually
 live_loop :ImperialMarch do
   3.times do
     play :g4
