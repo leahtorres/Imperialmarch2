@@ -1,0 +1,51 @@
+#Bpm used: https://songbpm.com/imperial-march?q=imperial%20march
+use_synth:saw
+#95 is my beats per minute
+use_bpm 95
+# s is my variable with the value of 0.25
+s = 0.25
+#This array named notes is my melody notes that will place on itself without any other sample of music(solo).
+notes = [:g4, :g4, :g4, :e4, :b4, :g4, :e4, :b4, :g4, :d5, :d5, :d5, :e5, :b4, :g4, :e4, :b4, :g4]
+#This array of sleeps are the sleeps for each note above based on what order it's located
+sleeps = [4*s, 4*s, 4*s, 3*s, s, 4*s, 3*s, s, 8*s, 4*s, 4*s, 4*s, 0.75, s, 4*s, 0.75, s, 8*s]
+index = 0
+#The notes above will play for a loop of 18 times, which adds one each time, because each note begins with 0 and ends 18.
+18.times do
+  play notes[index]
+  print [index]
+  sleep sleeps[index]
+  index = index+1
+end
+#I made each sample into a variable to shorten the time of writing the full name of the sample
+# x is my variable to replace a sample with the x letter,istead of writing the sample name each time
+x = :drum_heavy_kick
+j = :drum_snare_hard
+l = :drum_cymbal_closed
+# a is represented to subsitute amp which is the number of 0
+a = 0.5
+#the echo will make
+with_fx :echo do
+  live_loop :drum do
+    r = rrand_i(15,10)
+    sample x, amp: r, rate: 2
+    sleep 0.5
+    sample x, amp: r, rate: 4
+    sleep 0.5
+    sample j, amp: r, rate: 3, cutoff: 2
+    sleep 0.5
+    sample l, amp: r
+    sleep 0.5
+    r = r+1
+  end
+end
+#now the melody is put into live_loop which means that it would keep going perpetually
+live_loop :ImperialMarch do
+  notes = [:g4, :g4, :g4, :e4, :b4, :g4, :e4, :b4, :g4, :d5, :d5, :d5, :e5, :b4, :g4, :e4, :b4, :g4]
+  sleeps = [4*s, 4*s, 4*s, 3*s, s, 4*s, 3*s, s, 8*s, 4*s, 4*s, 4*s, 0.75, s, 4*s, 0.75, s, 8*s]
+  index = 0
+  18.times do
+    play notes[index]
+    sleep sleeps[index]
+    index = index+1
+  end
+end
