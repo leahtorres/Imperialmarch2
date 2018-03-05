@@ -27,8 +27,7 @@ end
 x = :drum_heavy_kick
 j = :drum_snare_hard
 l = :drum_cymbal_closed
-# a is represented to subsitute amp which is the number of 0
-a = 0.5
+# a is represented to subsitute amp which is the number of 0.
 define :drum do
   r = rrand_i(3.75,0.25)
   sample x, amp: r
@@ -44,7 +43,6 @@ end
 with_fx :echo do
   live_loop :drum do
     drum
-    r = r+1
   end
 end
 #now the melody is put into live_loop which means that it would keep going perpetually
@@ -69,9 +67,11 @@ live_loop :darkvad do
   sleep 3
 end
 #this is the live loop for father that will have an amp of 4 so it soundds higher.
+x = 0
 live_loop :father do
-  sample father, amp: 5
+  sample father, amp: x
   sleep 10
+  x =x+1
 end
 #This live loop is for the laser to give it a sense of the movie fighting scene.
 live_loop :laser do
