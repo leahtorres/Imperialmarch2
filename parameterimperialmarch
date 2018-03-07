@@ -1,0 +1,119 @@
+#Name of the song: imperial March
+#sheet music: https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0017607
+#Bpm used: https://songbpm.com/imperial-march?q=imperial%20march
+use_synth:saw
+#95 is my beats per minute
+use_bpm 95
+# s is my variable with the value of 0.25
+s = 0.25
+#This array named notes is my melody notes that will place on itself without any other sample of music(solo).
+notes = [:g4, :g4, :g4, :e4, :b4, :g4, :e4, :b4, :g4, :d5, :d5, :d5, :e5, :b4, :g4, :e4, :b4, :g4]
+#This array of sleeps are the sleeps for each note above based on what order it's located
+sleeps = [4*s, 4*s, 4*s, 3*s, s, 4*s, 3*s, s, 8*s, 4*s, 4*s, 4*s, 0.75, s, 4*s, 0.75, s, 8*s]
+index = 0
+darkvad = "C:/Users/leah_torres/Documents/Audacity/darkvad.wav"
+father = "C:/Users/leah_torres/Documents/Audacity/father2.wav"
+laser = "C:/Users/leah_torres/Documents/Audacity/laser.wav"
+vadspeak = "C:/Users/leah_torres/Documents/Audacity/skywalker.wav"
+#The notes above will play for a loop of 18 times, which adds one each time, because each note begins with 0 and ends 18.
+18.times do
+  play notes[index]
+  print [index]
+  sleep sleeps[index]
+  index = index+1
+end
+#Name of the song: imperial March
+#sheet music: https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0017607
+#Bpm used: https://songbpm.com/imperial-march?q=imperial%20march
+use_synth:saw
+#95 is my beats per minute
+use_bpm 95
+# s is my variable with the value of 0.25
+s = 0.25
+#This array named notes is my melody notes that will place on itself without any other sample of music(solo).
+notes = [:g4, :g4, :g4, :e4, :b4, :g4, :e4, :b4, :g4, :d5, :d5, :d5, :e5, :b4, :g4, :e4, :b4, :g4]
+#This array of sleeps are the sleeps for each note above based on what order it's located
+sleeps = [4*s, 4*s, 4*s, 3*s, s, 4*s, 3*s, s, 8*s, 4*s, 4*s, 4*s, 0.75, s, 4*s, 0.75, s, 8*s]
+index = 0
+darkvad = "C:/Users/leah_torres/Documents/Audacity/darkvad.wav"
+father = "C:/Users/leah_torres/Documents/Audacity/father2.wav"
+laser = "C:/Users/leah_torres/Documents/Audacity/laser.wav"
+vadspeak = "C:/Users/leah_torres/Documents/Audacity/skywalker.wav"
+#The notes above will play for a loop of 18 times, which adds one each time, because each note begins with 0 and ends 18.
+18.times do
+  play notes[index]
+  print [index]
+  sleep sleeps[index]
+  index = index+1
+end
+#I made each sample into a variable to shorten the time of writing the full name of the sample
+# x is my variable to replace a sample with the x letter,istead of writing the sample name each time
+x = :drum_heavy_kick
+j = :drum_snare_hard
+l = :drum_cymbal_closed
+# a is represented to subsitute amp which is the number of 0.
+define :drum do
+  r = rrand_i(3.75,0.25)
+  sample x, amp: r
+  sleep 0.5
+  sample x, amp: r
+  sleep 0.5
+  sample j, amp: r, cutoff: 2
+  sleep 0.5
+  sample l, amp: r
+  sleep 0.5
+end
+#the echo will make
+with_fx :echo do
+  live_loop :drum do
+    drum
+  end
+end
+#now the melody is put into live_loop which means that it would keep going perpetually.
+#The function is using parameters that will be indicating the note it will play each time.
+define :melody_song do |n, l|
+  play n
+  sleep l
+end
+live_loop :ImperialMarch do
+  3. times do
+    melody_song :g4, 4*s
+  end
+  melody_song :e4, 3*s
+  melody_song :b4, s
+  melody_song :g4, 4*s
+  melody_song :e4, 3*s
+  melody_song :b4, s
+  melody_song :g4, 8*s
+  3. times do
+    melody_song :d5, 4*s
+  end
+  melody_song :e5, 0.75
+  melody_song :b4, s
+  melody_song :g4, 4*s
+  melody_song :e4, 0.75
+  melody_song :b4, s
+  melody_song :g4, 8*s
+end
+#the sample will play once of skywalker is with them
+1.times do
+  sample vadspeak, amp: 12
+  sleep 3
+end
+#This is the breathing of Vader to represent Vad.
+live_loop :darkvad do
+  sample darkvad, amp: 2
+  sleep 3
+end
+#this is the live loop for father that will have an amp of 4 so it soundds higher.
+x = 0
+live_loop :father do
+  sample father, amp: x
+  sleep 10
+  x =x+1
+end
+#This live loop is for the laser to give it a sense of the movie fighting scene.
+live_loop :laser do
+  sample laser, amp: 2
+  sleep 2
+end
