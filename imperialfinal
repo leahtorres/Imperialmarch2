@@ -31,6 +31,7 @@ k = :drum_cymbal_closed
 m = :bass_thick_c
 n = :bass_voxy_hit_c
 z = :drum_cymbal_pedal
+h = :elec_lo_snare
 # a is represented to subsitute amp which is the number of 0.
 define :drum do
   r = rrand_i(3.75,0.25)
@@ -51,6 +52,8 @@ define :drum do
   sample x, amp: r
   sleep 0.5
   sample z, amp: r
+  sleep 0.5
+   sample h
   sleep 0.5
 end
 
