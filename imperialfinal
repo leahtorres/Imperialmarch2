@@ -111,3 +111,20 @@ live_loop :laser do
   sample laser, amp: 2
   sleep 2
 end
+#These last live loops will stop all the live loops that were playing together to go onto the transition.
+
+live_loop :ImperialMarch do
+  stop
+end
+live_loop :drums do
+  stop
+end
+live_loop :darkvad do
+  stop
+end
+live_loop :father do
+  stop
+end
+live_loop :laser do
+  stop
+end
